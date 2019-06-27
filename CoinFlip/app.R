@@ -18,7 +18,7 @@ ui <- dashboardPage(
     dashboardSidebar(
         width = sidebarwidth,
         numericInput("n_sim", "Number of Simulations", value = 100, min = 1, step =1, width = "100%"),
-        numericInput("n_flip", "Number of Flips", value = 10, min = 1, step = 1, width = "100%"),
+        numericInput("n_flip", "Number of Flips Each Simulation", value = 10, min = 1, step = 1, width = "100%"),
         sliderInput("p_heads", "Probability of Heads", value = 0.5, min = 0, max = 1, step = 0.05, width = "100%")
     ),
     
@@ -53,7 +53,7 @@ server <- function(input, output) {
         input$p_heads
         list(
             # build animated slider
-            sliderInput("i_sim", NULL, value = 1, min = 0, max = input$n_sim, step = 1, width = "100%", animate = animationOptions(interval = round(20000/input$n_sim)), pre="Simulation "),
+            sliderInput("i_sim", NULL, value = 1, min = 0, max = input$n_sim, step = 1, width = "100%", animate = animationOptions(interval = 200), pre="Simulation "),
             # play automatically once rendered
             tags$script("$(document).ready(function(){ setTimeout(function() {$('.slider-animate-button').click()},5); });")
         )
