@@ -9,7 +9,7 @@ sidebarwidth <- 200
 ui <- dashboardPage(
     skin = "blue",
     dashboardHeader(
-        title = "CoinFlip", titleWidth = sidebarwidth,
+        title = "Probability", titleWidth = sidebarwidth,
         tags$li(a(href = "https://github.com/JackEdTaylor/ShinyPsyTeachR",
                   HTML(paste(icon("github"), "&nbsp;GitHub")),
                   title = "GitHub Repository"), class="dropdown")
