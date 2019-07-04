@@ -1,36 +1,60 @@
 library(shiny)
+library(shinyjs)
 library(tidyverse)
 
-ui <- fluidPage(
+loading_done <- function(null_test) {
+    hide(id = "loading_page", anim = TRUE, animType = "slide")
+    show("main_content")
+}
 
-    titlePanel("The Normal Distribution"),
-
-    sidebarLayout(
-        sidebarPanel(
-            width = 4,
-            tags$p("This web app is designed to help you understand how the pnorm() and qnorm() functions work. Play around with the parameters to see how the arguments you give to the function are being used to calculate the output."),
-            tags$br(),
-            selectInput("dist_function", "Function", c("pnorm()", "qnorm()")),
-            uiOutput("arg1_ui"),
-            numericInput("arg2", "mean = ", value = 170),
-            numericInput("arg3", "sd = ", value = 7.2),
-            selectInput("arg4", "lower.tail =", c("TRUE", "FALSE"), selected = "FALSE")
-        ),
-
-        mainPanel(
-            width = 8,
-            shiny::HTML("<H4><b>Selected R Code</b></H4>"),
-            tags$p("Your selections produce the following R code:"),
-            verbatimTextOutput("rcode_text"),
-            tags$p("You can copy-paste this into RStudio to get the same result."),
-            tags$br(),
-            shiny::HTML("<H4><b>Plain English Translation</b></H4>"),
-            uiOutput("plain_eng_trans"),
-            tags$br(),
-            shiny::HTML("<H4><b>Result</b></H4>"),
-            verbatimTextOutput("rcode_text_output"),
-            tags$br(),
-            plotOutput("dist_plot")
+ui <- tagList(
+    useShinyjs(),
+    tags$head(
+        tags$link(href = "style.css", rel="stylesheet")
+    ),
+    div(
+        id = "loading_page",
+        img(src = "psyteachr_hex.png", class = "center-fit"),
+        tags$br(), tags$br(),
+        icon("spinner", class="fa-spin")
+    ),
+    hidden(
+        div(
+            id = "main_content",
+            
+            fluidPage(
+                
+                titlePanel("The Normal Distribution"),
+                
+                sidebarLayout(
+                    sidebarPanel(
+                        width = 4,
+                        tags$p("This web app is designed to help you understand how the pnorm() and qnorm() functions work. Play around with the parameters to see how the arguments you give to the function are being used to calculate the output."),
+                        tags$br(),
+                        selectInput("dist_function", "Function", c("pnorm()", "qnorm()")),
+                        uiOutput("arg1_ui"),
+                        numericInput("arg2", "mean = ", value = 170),
+                        numericInput("arg3", "sd = ", value = 7.2),
+                        selectInput("arg4", "lower.tail =", c("TRUE", "FALSE"), selected = "FALSE")
+                    ),
+                    
+                    mainPanel(
+                        width = 8,
+                        shiny::HTML("<H4><b>Selected R Code</b></H4>"),
+                        tags$p("Your selections produce the following R code:"),
+                        verbatimTextOutput("rcode_text"),
+                        tags$p("You can copy-paste this into RStudio to get the same result."),
+                        tags$br(),
+                        shiny::HTML("<H4><b>Plain English Translation</b></H4>"),
+                        uiOutput("plain_eng_trans"),
+                        tags$br(),
+                        shiny::HTML("<H4><b>Result</b></H4>"),
+                        verbatimTextOutput("rcode_text_output"),
+                        tags$br(),
+                        plotOutput("dist_plot")
+                    )
+                )
+            )
         )
     )
 )
@@ -66,7 +90,7 @@ server <- function(input, output) {
             shiny::HTML(sprintf("In plain English, your R code says:<br><br>Under a normal distribution, with a mean of <b>%g</b> and a standard deviation of <b>%g</b>, what is the <b>%s</b> value in the <b>%s</b> <b>%g%%</b>?", input$arg2, input$arg3, ifelse(input$arg4=="TRUE", "highest", "lowest"), ifelse(input$arg4=="TRUE", "bottom", "top"), input$arg1*100))
         }
     })
-
+    
     output$dist_plot <- renderPlot({
         i_mean <- input$arg2
         i_sd <- input$arg3
@@ -105,6 +129,8 @@ server <- function(input, output) {
             theme(axis.text.x = element_text(size = 16))
         
     }, bg = "transparent")
+    
+    loading_done()
 }
 
 # Run the application 
