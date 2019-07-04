@@ -92,41 +92,45 @@ server <- function(input, output) {
     })
     
     output$dist_plot <- renderPlot({
-        i_mean <- input$arg2
-        i_sd <- input$arg3
-        
-        sd_scope <- 4
-        
-        i_samples <- seq(
-            i_mean-sd_scope*i_sd, i_mean+sd_scope*i_sd,
-            abs((i_mean+sd_scope*i_sd) - (i_mean-sd_scope*i_sd))/1000
-        )
-        
-        i_dat <- tibble(
-            x = i_samples,
-            density = dnorm(i_samples, mean = i_mean, sd = i_sd)
-        )
-        
-        target_val <- if (input$dist_function == "pnorm()") {
-            input$arg1
-        } else {
-            eval(parse(text=rcode_react()))
-        }
-        
-        i_dat_shade <- if (input$arg4) {
-            filter(i_dat, x<=target_val)
-        } else {
-            filter(i_dat, x>=target_val)
-        }
-        
-        i_dat %>%
-            ggplot(aes(x = x, y = density)) +
-            geom_area(data = i_dat_shade, fill = "red") +
-            geom_line(size = 1.2) +
-            labs(x = NULL, y = NULL) +
-            theme_minimal() +
-            scale_y_continuous(breaks = NULL) +
-            theme(axis.text.x = element_text(size = 16))
+        tryCatch({
+            i_mean <- input$arg2
+            i_sd <- input$arg3
+            
+            sd_scope <- 4
+            
+            i_samples <- seq(
+                i_mean-sd_scope*i_sd, i_mean+sd_scope*i_sd,
+                abs((i_mean+sd_scope*i_sd) - (i_mean-sd_scope*i_sd))/1000
+            )
+            
+            i_dat <- tibble(
+                x = i_samples,
+                density = dnorm(i_samples, mean = i_mean, sd = i_sd)
+            )
+            
+            target_val <- if (input$dist_function == "pnorm()") {
+                input$arg1
+            } else {
+                eval(parse(text=rcode_react()))
+            }
+            
+            i_dat_shade <- if (input$arg4) {
+                filter(i_dat, x<=target_val)
+            } else {
+                filter(i_dat, x>=target_val)
+            }
+            
+            i_dat %>%
+                ggplot(aes(x = x, y = density)) +
+                geom_area(data = i_dat_shade, fill = "red") +
+                geom_line(size = 1.2) +
+                labs(x = NULL, y = NULL) +
+                theme_minimal() +
+                scale_y_continuous(breaks = NULL) +
+                theme(axis.text.x = element_text(size = 16))
+        }, error = function(e) {
+            cat("Plot loading...")
+        })
         
     }, bg = "transparent")
     
