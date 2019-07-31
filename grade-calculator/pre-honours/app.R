@@ -2,7 +2,8 @@ library(shiny)
 library(shinyjs)
 library(tidyverse)
 
-course <- read_csv("course.csv")
+course <- read_csv("course.csv") %>%
+    dplyr::mutate(assessment_id = sprintf("ass_%i", row_number()))
 
 level_tabs <- lapply(1:length(unique(course$level)), function(i) {
         level_label <- unique(course$level)[i]
@@ -14,7 +15,7 @@ level_tabs <- lapply(1:length(unique(course$level)), function(i) {
             
             sliders <- lapply(1:nrow(module_data), function(k) {
                 assessment_label <- sprintf("%s (%g%%)", module_data$assessment[k], module_data$module_proportion[k]*100)
-                assessment_id <- sprintf("ass_%i_%i_%i", i, j, k)
+                assessment_id <- module_data$assessment_id[k]
                 column(6, sliderInput(assessment_id, assessment_label, 0, 22, 0, 1))
             })
             
@@ -65,7 +66,7 @@ ui <- fluidPage(
                     ),
                     
                     mainPanel(
-                        
+                        uiOutput("results")
                     )
                 )
             )
@@ -77,9 +78,15 @@ server <- function(input, output) {
     
     loading_done()
     
+    grades <- reactive({
+        course %>%
+            dplyr::mutate(grade = sapply(out$assessment_id, function(id) input[id])
+    })
     
+    output$results <- renderUI({
+        
+    })
     
 }
 
-# Run the application 
 shinyApp(ui = ui, server = server)
