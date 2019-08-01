@@ -1,33 +1,33 @@
-level,module,assessment,module_proportion
-Level 1,1A: Biological and Experimental,Lab 1 Activity,0.02
-Level 1,1A: Biological and Experimental,Lab 1 MCQs,0.02
-Level 1,1A: Biological and Experimental,Lab 2 Activity,0.04
-Level 1,1A: Biological and Experimental,Lab 2 MCQs,0.02
-Level 1,1A: Biological and Experimental,Lab 3 Activity,0.06
-Level 1,1A: Biological and Experimental,Lab 3 MCQs,0.02
-Level 1,1A: Biological and Experimental,Group Presentation,0.07
-Level 1,1A: Biological and Experimental,Exam,0.5
-Level 1,1A: Biological and Experimental,Essay,0.25
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Lab 1 Activity,0.07
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Lab 2 Activity,0.07
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Lab 3 Activity,0.07
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Group Project,0.07
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Portfolio Reflection,0.02
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Exam,0.5
-Level 1,"1B: Social, Developmental, Health & Individual Differences",Class Essay,0.2
-Level 2,2A,Lab 1 Exercises,0.03
-Level 2,2A,Lab 2 Exercises,0.03
-Level 2,2A,Lab 3 Exercises,0.03
-Level 2,2A,Lab 4 Exercises,0.03
-Level 2,2A,Lab 5 Exercises,0.03
-Level 2,2A,Research Report,0.35
-Level 2,2A,"Cognitive, Psychobiology, Perception & Visual Cognition Exam",0.36
-Level 2,2A,Statistics & Research Methods 1 Exam,0.14
-Level 2,2B,Lab 1 Exercises,0.03
-Level 2,2B,Lab 2 Exercises,0.03
-Level 2,2B,Lab 3 Exercises,0.03
-Level 2,2B,Lab 4 Exercises,0.03
-Level 2,2B,Lab 5 Exercises,0.03
-Level 2,2B,Research Report,0.35
-Level 2,2B,"Social, Individual Differences & Developmental Exam",0.36
-Level 2,2B,Statistics & Research Methods 2 Exam,0.14
+level,module,module_short,assessment_type,assessment,module_proportion
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Lab 1 Activity,0.02
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Lab 1 MCQs,0.02
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Lab 2 Activity,0.04
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Lab 2 MCQs,0.02
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Lab 3 Activity,0.06
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Lab 3 MCQs,0.02
+Level 1,1A: Biological and Experimental,1A,Lab Portfolio,Group Presentation,0.07
+Level 1,1A: Biological and Experimental,1A,Exams,Exam,0.5
+Level 1,1A: Biological and Experimental,1A,Coursework Essays,Coursework Essay,0.25
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Lab Portfolio,Lab 1 Activity,0.07
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Lab Portfolio,Lab 2 Activity,0.07
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Lab Portfolio,Lab 3 Activity,0.07
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Lab Portfolio,Group Project,0.07
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Lab Portfolio,Portfolio Reflection,0.02
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Exams,Exam,0.5
+Level 1,"1B: Social, Developmental, Health & Individual Differences",1B,Coursework Essays,Coursework Essay,0.2
+Level 2,2A,2A,Lab Portfolio,Lab 1 Exercises,0.03
+Level 2,2A,2A,Lab Portfolio,Lab 2 Exercises,0.03
+Level 2,2A,2A,Lab Portfolio,Lab 3 Exercises,0.03
+Level 2,2A,2A,Lab Portfolio,Lab 4 Exercises,0.03
+Level 2,2A,2A,Lab Portfolio,Lab 5 Exercises,0.03
+Level 2,2A,2A,Lab Portfolio,Research Report,0.35
+Level 2,2A,2A,Exams,"Cognitive, Psychobiology, Perception & Visual Cognition Exam",0.36
+Level 2,2A,2A,Exams,Statistics & Research Methods 1 Exam,0.14
+Level 2,2B,2B,Lab Portfolio,Lab 1 Exercises,0.03
+Level 2,2B,2B,Lab Portfolio,Lab 2 Exercises,0.03
+Level 2,2B,2B,Lab Portfolio,Lab 3 Exercises,0.03
+Level 2,2B,2B,Lab Portfolio,Lab 4 Exercises,0.03
+Level 2,2B,2B,Lab Portfolio,Lab 5 Exercises,0.03
+Level 2,2B,2B,Lab Portfolio,Research Report,0.35
+Level 2,2B,2B,Exams,"Social, Individual Differences & Developmental Exam",0.36
+Level 2,2B,2B,Exams,Statistics & Research Methods 2 Exam,0.14
