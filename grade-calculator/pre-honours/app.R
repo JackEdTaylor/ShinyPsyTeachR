@@ -167,7 +167,7 @@ server <- function(input, output) {
             title = sprintf("%s Summary", input$level_tab),
             width = 12, status="info", solidHeader = TRUE,
             fluidRow(
-                column(12, shiny::HTML(sprintf("<h3>Overall %s Average: <b>%s</b> (%g/22)</h3>", input$level_tab, grade_boundaries$label[grade_boundaries$grade==round_grade(mean(modules_grades()$grade_module))], round_grade(mean(modules_grades()$grade_module)) )))
+                column(12, shiny::HTML(sprintf("<h3>Overall %s Average: <b>%s</b> (%g/22)</h3>", input$level_tab, grade_boundaries$label[grade_boundaries$grade==round_grade(mean(modules_grades()$grade_module))], round_grade(mean(modules_grades()$grade_module), 2) )))
             )
         )
     })
@@ -199,7 +199,7 @@ server <- function(input, output) {
             width = 12, status="info", solidHeader = TRUE,
             fluidRow(
                 lapply(1:nrow(modules_grades()), function(m) {
-                    column(12, shiny::HTML(sprintf("<h4>%s: <b>%s</b> (%g/22)</h4>", modules_grades()$module[m], grade_boundaries$label[grade_boundaries$grade==round_grade(modules_grades()$grade_module[m])], round_grade(modules_grades()$grade_module[m]))))
+                    column(12, shiny::HTML(sprintf("<h4>%s: <b>%s</b> (%g/22)</h4>", modules_grades()$module[m], grade_boundaries$label[grade_boundaries$grade==round_grade(modules_grades()$grade_module[m])], round_grade(modules_grades()$grade_module[m], 2))))
                 }),
                 column(12, plotOutput("breakdown_plot", height = 200))
             )
