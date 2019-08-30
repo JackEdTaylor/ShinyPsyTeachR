@@ -51,7 +51,7 @@ ui <- tagList(
                         shiny::HTML("<H4><b>Result</b></H4>"),
                         verbatimTextOutput("rcode_text_output"),
                         tags$br(),
-                        plotOutput("dist_plot")
+                        plotOutput("dist_plot", height = 200)
                     )
                 )
             )
@@ -132,7 +132,7 @@ server <- function(input, output) {
             cat("Plot loading...")
         })
         
-    }, bg = "transparent", height = 200)
+    }, bg = "transparent")
     
     loading_done()
 }
