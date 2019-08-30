@@ -132,7 +132,7 @@ server <- function(input, output) {
             cat("Plot loading...")
         })
         
-    }, bg = "transparent")
+    }, bg = "transparent", height = 200)
     
     loading_done()
 }
